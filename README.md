@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # ⚡ Real-time Chatbot
 
 A chatbot that answers with **live data**. A Groq-hosted LLM decides which of **24 live sources** to call (web, news, X/Twitter,
@@ -131,3 +132,6 @@ Then add `my_source` to `ALL_TOOLS` and `TOOL_LABELS` in `chatbot/tools/__init__
 - **User agent:** set `HTTP_USER_AGENT` to identify your bot with your own contact, e.g.
   `MyChatbot/1.0 (https://yoursite.com)`. Wikipedia requires this and may throttle generic clients.
 - **Deploying to Streamlit Cloud:** put the same keys in the app's *Secrets*. `config.py` reads them automatically.
+=======
+# RAG-CHAT_BOT
+>>>>>>> 8e7ae35dbe6f07997f15471da0240ec4fb21df55

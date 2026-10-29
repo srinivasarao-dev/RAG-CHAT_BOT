@@ -256,6 +256,7 @@ def crypto_price(coin: str, vs_currency: str = "usd") -> str:
     ).json().get(coin_id, {})
     return to_text(
         {
+            "source": "CoinGecko",
             "coin": found[0].get("name"),
             "symbol": found[0].get("symbol"),
             "currency": vs,
@@ -280,4 +281,4 @@ def currency_convert(amount: float, from_currency: str, to_currency: str) -> str
     except Exception:
         data = http_get(f"https://open.er-api.com/v6/latest/{src}").json()
         rate, as_of = data["rates"][dst], data.get("time_last_update_utc")
-    return f"{amount:,.2f} {src} = {amount * rate:,.4f} {dst} (rate {rate}, as of {as_of})"
+    return f"{amount:,.2f} {src} = {amount * rate:,.4f} {dst} (rate {rate}, as of {as_of}; source: ECB via Frankfurter)"

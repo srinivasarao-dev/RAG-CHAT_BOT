@@ -169,7 +169,7 @@ def read_webpage(url: str) -> str:
 
         text = trafilatura.extract(html, include_comments=False, include_tables=True)
         if text:
-            return trim(f"URL: {url}\n\n{text}")
+            return trim(f"URL: {url}\n\n{text}", 5000)
     except Exception:
         pass
     from bs4 import BeautifulSoup
@@ -178,7 +178,7 @@ def read_webpage(url: str) -> str:
     for tag in soup(["script", "style", "nav", "footer", "header", "aside", "form"]):
         tag.decompose()
     text = "\n".join(line.strip() for line in soup.get_text("\n").splitlines() if line.strip())
-    return trim(f"URL: {url}\n\n{text}")
+    return trim(f"URL: {url}\n\n{text}", 5000)
 
 
 @tool

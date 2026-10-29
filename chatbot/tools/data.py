@@ -97,6 +97,7 @@ def weather(location: str, days: int = 3) -> str:
     ]
     return to_text(
         {
+            "source": "Open-Meteo",
             "location": f"{place.get('name')}, {place.get('admin1', '')}, {place.get('country', '')}",
             "local_time": cur.get("time"),
             "now": {

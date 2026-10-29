@@ -13,7 +13,7 @@ from chatbot.config import settings
 
 # Identify the bot honestly; Wikipedia and others require a descriptive UA with contact info
 USER_AGENT = settings.http_user_agent
-MAX_TOOL_OUTPUT = 6000  # characters; keeps the LLM context small and fast
+MAX_TOOL_OUTPUT = 3500  # characters; keeps the LLM context small, fast and under free-tier token limits
 
 _client = httpx.Client(
     timeout=httpx.Timeout(15.0, connect=5.0),

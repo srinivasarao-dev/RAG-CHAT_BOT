@@ -1,6 +1,7 @@
 """Tool registry. Add a new data source by writing a @tool function and listing it here."""
 from langchain_core.tools import BaseTool
 
+from chatbot.tools.code import github_file, package_info, run_python
 from chatbot.tools.data import calculator, current_datetime, earthquakes, sports_scores, weather
 from chatbot.tools.finance import (
     crypto_price,
@@ -53,6 +54,10 @@ TOOL_LABELS = {
     # reference
     "wikipedia": "📚 Wikipedia",
     "arxiv_search": "🔬 arXiv papers",
+    # coding
+    "run_python": "▶️ Run Python",
+    "package_info": "📦 Package versions",
+    "github_file": "📂 Read GitHub code",
 }
 
 ALL_TOOLS: dict[str, BaseTool] = {
@@ -63,8 +68,15 @@ ALL_TOOLS: dict[str, BaseTool] = {
         stock_quote, stock_history, stock_news, market_overview, mutual_fund_nav, crypto_price, currency_convert,
         weather, sports_scores, earthquakes, current_datetime, calculator,
         wikipedia, arxiv_search,
+        run_python, package_info, github_file,
     ]
 }
+
+# Tools available in Code mode (a focused set keeps the model on task and the prompt small)
+CODE_TOOLS = [
+    "run_python", "package_info", "github_file", "github_search", "stackoverflow_search",
+    "web_search", "read_webpage", "news_search", "current_datetime", "calculator",
+]
 
 assert set(ALL_TOOLS) == set(TOOL_LABELS), "every tool needs a UI label"
 

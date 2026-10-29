@@ -3,4 +3,4 @@
 __pycache__/
 *.pyc
 chat_history.db
-.streamlit/secrets.toml
+.models/

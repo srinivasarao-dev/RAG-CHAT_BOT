@@ -1,11 +1,14 @@
-# UI
-streamlit>=1.40
+# Web server (UI is plain HTML/JS in static/)
+fastapi>=0.110
+uvicorn[standard]>=0.29
 
 # LLM + agent
 langchain>=0.3
 langchain-core>=0.3
 langchain-groq>=0.3
 langgraph>=0.3
+langchain-anthropic>=1.7   # Claude (optional, bring your own key)
+langchain-openai>=1.7      # OpenAI GPT & Codex (optional, bring your own key)
 
 # Database
 supabase>=2.10
@@ -21,5 +24,11 @@ wikipedia
 arxiv
 trafilatura          # clean article text from web pages
 beautifulsoup4
+
+# Chat with files
+pypdf                # PDF text
+python-docx          # Word .docx
+fastembed            # local embeddings (BAAI/bge-small-en-v1.5), no API key
+python-multipart     # file uploads
 
 python-dotenv

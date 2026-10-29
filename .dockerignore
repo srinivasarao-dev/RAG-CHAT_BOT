@@ -1,0 +1,9 @@
+# never ship secrets or local data in the image
+.env
+*.db
+.venv/
+__pycache__/
+*.pyc
+.git/
+.vscode/
+.models/

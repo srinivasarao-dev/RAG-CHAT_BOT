@@ -1,0 +1,38 @@
+# One-click deploy on Render: Dashboard -> New -> Blueprint -> pick this repo.
+# Render asks for each "sync: false" value when you create the service.
+services:
+  - type: web
+    name: pulse-ai
+    runtime: docker
+    # "starter" (512 MB+, always on) is recommended; "free" works but sleeps after inactivity
+    # and is tight on memory with the embedding model loaded.
+    plan: starter
+    healthCheckPath: /api/config
+    autoDeploy: true
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      # Required in production: chats and files must live in Supabase (container disks are temporary)
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_KEY          # secret key (sb_secret_...), server-side only
+        sync: false
+      - key: SUPABASE_ANON_KEY     # publishable key (sb_publishable_...): turns on login
+        sync: false
+      - key: AUTH
+        value: "on"
+      - key: CODE_EXECUTION
+        value: "off"
+      - key: HTTP_USER_AGENT
+        value: "PulseAI/1.0 (https://github.com/srinivasarao-dev/RAG-CHAT_BOT)"
+      # Optional extras
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: TAVILY_API_KEY
+        sync: false
+      - key: SERPER_API_KEY
+        sync: false
+      - key: NEWSAPI_KEY
+        sync: false
